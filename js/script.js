@@ -1,8 +1,8 @@
-window.addEventListener('DOMContentLoaded', function() {
+ window.addEventListener('DOMContentLoaded', function() {
     
     'use strict';
     let tab = document.querySelectorAll('.info-header-tab');
-    let info = document.querySelector('info-header');
+    let info = document.querySelector('.info-header');
     let tabContent = document.querySelectorAll('.info-tabcontent');
 
     function hideTabContent(a) {
@@ -23,5 +23,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
     info.addEventListener('click', function(event) {
         let target = event.target;
+        if (target && target.classList.contains('info-header-tab')) {
+            for(let i = 0; i < tab.length; i++) {
+                if (target == tab[i]) {
+                    hideTabContent(0);
+                    showTabContent(i);
+                    break;
+                }
+            }
+        }
     });
 });
